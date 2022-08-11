@@ -1,0 +1,12 @@
+<input  [formControl]="this.control" type="text" #txtControl>
+<div nglFormValidator [formControl]="control" [inputReference]="txtControl"></div>
+<div nglFormValidator [formControl]="control" [inputReference]="txtControl" [customErrors]="[{error: 'required', message: 'Campo Requerido'}]"></div>
+<button (click)="this.control.updateValueAndValidity()">SetControlValidators</button>
+
+<div [formGroup]="testForm">
+  <input formControlName="name" type="text" #name>
+  <div nglFormValidator formControlName="name" [inputReference]="name"></div>
+  <input formControlName="age" type="text" #age>
+  <div nglFormValidator formControlName="age" [inputReference]="age"></div>
+</div>
+<button (click)="this.validateTestForm()">SetGroupValidators</button>

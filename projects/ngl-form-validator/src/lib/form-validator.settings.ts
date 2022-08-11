@@ -1,5 +1,9 @@
 import { ValidatorErrorModel } from './models/validator-error.model';
 
+export interface FormValidatorSettings {
+  defaultErrorMessage: string;
+  errorMessages: ValidatorErrorModel[];
+}
 export const DEFAULT_ERROR_MESSAGE = 'Invalid value';
 export const ERROR_MESSAGES: ValidatorErrorModel[] = [
   {

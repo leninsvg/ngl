@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { ValidatorErrorModel } from '../models/validator-error.model';
 import { DEFAULT_ERROR_MESSAGE, ERROR_MESSAGES } from '../form-validator.settings';
+import { NglFormValidatorService } from '../ngl-form-validator.service';
 
 const NOOP_VALUE_ACCESSOR: ControlValueAccessor = {
   writeValue(): void {
@@ -24,7 +25,7 @@ const NOOP_VALUE_ACCESSOR: ControlValueAccessor = {
 };
 
 @Directive({
-  selector: '[lFormValidator]'
+  selector: '[nglFormValidator]'
 })
 export class FormValidatorDirective implements OnInit, AfterViewInit, OnDestroy, OnChanges {
   @Input()
@@ -36,6 +37,7 @@ export class FormValidatorDirective implements OnInit, AfterViewInit, OnDestroy,
 
   constructor(
     private _el: ElementRef,
+    private _nglFormValidatorService: NglFormValidatorService,
     @Optional()
     public ngControl: NgControl
   ) {
@@ -85,7 +87,7 @@ export class FormValidatorDirective implements OnInit, AfterViewInit, OnDestroy,
     for (const keyError in this.ngControl.errors) {
       if (!this._errorMessages[keyError]) {
         console.log('Please add custom error for:' + keyError);
-        this._el.nativeElement.textContent = DEFAULT_ERROR_MESSAGE;
+        this._el.nativeElement.textContent = this._nglFormValidatorService.formValidatorSettings?.defaultErrorMessage || DEFAULT_ERROR_MESSAGE;
         break;
       }
       this._el.nativeElement.textContent = this._errorMessages[keyError].message;
@@ -94,7 +96,8 @@ export class FormValidatorDirective implements OnInit, AfterViewInit, OnDestroy,
 
   private initErrorMessages(): void {
     this._errorMessages = {};
-    for (const error of ERROR_MESSAGES) {
+    const errorMessages = this._nglFormValidatorService.formValidatorSettings?.errorMessages || ERROR_MESSAGES;
+    for (const error of errorMessages) {
       this._errorMessages[error.error] = {...error};
     }
     if (this.customErrors) {
