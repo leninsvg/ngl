@@ -1,11 +1,14 @@
 {
   "name": "ngl-form-validator",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "peerDependencies": {
     "@angular/common": "^14.0.0",
     "@angular/core": "^14.0.0"
   },
   "dependencies": {
     "tslib": "^2.3.0"
+  },
+  "publishConfig": {
+    "registry":"https://github.com/leninsvg/ngl/tree/main/projects/ngl-form-validator"
   }
 }
