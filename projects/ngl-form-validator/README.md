@@ -4,6 +4,8 @@ The functionality of that library is to show error of behabior dynamic.
 
 ## GitHub
 
+https://github.com/leninsvg/ngl/tree/main/projects/ngl-form-validator
+
 ## Demo
 
 https://stackblitz.com/edit/angular-ivy-bbcife?file=src/app/app.component.ts
