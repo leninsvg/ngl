@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, Optional } from '@angular/core';
 import { FormValidatorSettings } from './form-validator.settings';
 import { AbstractControl, FormArray, FormControl, FormGroup } from '@angular/forms';
 
@@ -8,7 +8,7 @@ import { AbstractControl, FormArray, FormControl, FormGroup } from '@angular/for
 export class NglFormValidatorService {
 
   constructor(
-    @Inject('FORM_VALIDATOR_SETTINGS')
+    @Optional() @Inject('FORM_VALIDATOR_SETTINGS')
     public formValidatorSettings: FormValidatorSettings) {
   }
 

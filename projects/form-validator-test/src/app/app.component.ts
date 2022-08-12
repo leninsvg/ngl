@@ -10,16 +10,16 @@ import { NglFormValidatorService } from '../../../ngl-form-validator/src/lib/ngl
 export class AppComponent {
   public control: FormControl;
   public testForm: FormGroup;
-  title = 'form-validator-test';
   constructor(
     private _formBuilder: FormBuilder,
     private _nglFormValidatorService: NglFormValidatorService
   ) {
-    this.control = new FormControl('', [Validators.required])
+    this.control = new FormControl('', [Validators.required]);
     this.testForm = _formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(10)]],
-      age: ['', [Validators.min(10)]]
-    })
+      age: ['', [Validators.min(10)]],
+      birthDate: ['', [Validators.required]],
+    });
   }
 
   public validateTestForm(): void {

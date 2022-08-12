@@ -1,12 +1,38 @@
-<input  [formControl]="this.control" type="text" #txtControl>
-<div nglFormValidator [formControl]="control" [inputReference]="txtControl"></div>
-<div nglFormValidator [formControl]="control" [inputReference]="txtControl" [customErrors]="[{error: 'required', message: 'Campo Requerido'}]"></div>
-<button (click)="this.control.updateValueAndValidity()">SetControlValidators</button>
+<h4>Control</h4>
+<input [formControl]="this.control" type="text" #txtControl />
+<div
+  nglFormValidator
+  [formControl]="control"
+  [inputReference]="txtControl"
+></div>
+<div
+  nglFormValidator
+  [formControl]="control"
+  [inputReference]="txtControl"
+  [customErrors]="[{ error: 'required', message: 'Campo Requerido' }]"
+></div>
+<button (click)="this.control.updateValueAndValidity()">
+  SetControlValidators
+</button>
+<hr />
+<h4>Form Group</h4>
 
 <div [formGroup]="testForm">
-  <input formControlName="name" type="text" #name>
-  <div nglFormValidator formControlName="name" [inputReference]="name"></div>
-  <input formControlName="age" type="text" #age>
+  <input formControlName="name" type="text" #name />
+  <div
+    nglFormValidator
+    formControlName="name"
+    [customErrors]="[{ error: 'minlength', message: 'minimo 10 caracteres' }]"
+    [inputReference]="name"
+  ></div>
+  <input formControlName="age" type="text" #age />
   <div nglFormValidator formControlName="age" [inputReference]="age"></div>
+  <input type="datetime-local" formControlName="birthDate" #birthDate />
+  <div
+    nglFormValidator
+    formControlName="birthDate"
+    [inputReference]="birthDate"
+  ></div>
 </div>
 <button (click)="this.validateTestForm()">SetGroupValidators</button>
+

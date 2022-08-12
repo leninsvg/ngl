@@ -14,7 +14,7 @@ const settings: FormValidatorSettings = {
     AppComponent
   ],
   imports: [
-    NglFormValidatorModule.forRoot(settings),
+    NglFormValidatorModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
