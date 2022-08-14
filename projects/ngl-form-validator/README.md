@@ -90,6 +90,10 @@ export class AppModule {
 
 ```
 
+## Usages
+
+That library works with reactive forms.
+
 ### form control
 That directive create a binding between a reactive form control and html element the error messages can be in a div, label, mat-error, ...etc.
 
