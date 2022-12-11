@@ -1,10 +1,9 @@
 # NglFormValidator
 
-The functionality of that library is to show errors messages, that library listed the changes in the control and in the html element.
-That library works whit any html element for example: inputs, datetime picker, select, autocompletes, text area, etc.
+That helper. Help to show errors messages. That library listen the changes in reactive controls.
+And it can be used in some html elements as: inputs, datetime picker, select, autocompletes, text area, etc.
 
-That library help to development process when we work with errors because detect the changes and show errors when a change is detected 
-for example when make a change in the ts or in the html.
+That library help to development process  detect the changes in one html element and then show errors when that is detected.
 
 ## GitHub
 
@@ -24,9 +23,7 @@ Import NglFormValidatorModule
 ```
 ## directive nglFormValidator
 
-If don't have defined an error message for one error the default error message 
-is set and the no defined error is printed in console. 
-That is only for identified how error is missed to set in the configurations
+That helper has predefined error messages but that can be override if the user need.
 
 ### Properties
 
@@ -37,7 +34,7 @@ Use as reference to on form control
 Use as reference to on form control in on group
 
 #### inputReference
-On that part make reference with the HTML input for make that is necesary to pass the input
+On that part make reference with the HTML input for make that is necessary to pass the input
 
 #### customErrors
 Array in that you can use a custom error message. If don't like to use the predefined messages.
@@ -63,22 +60,13 @@ export class AppModule {
 
 **Override the error configuration**
 
-The settings has a FormValidatorSettings the next properties
+Override error messages.
 
-```
-// default error messages for each validator in that part you can configure 
-// own validators or any on need the name
-errorMessages array of errors
-    - error // the name of the error for example: required, minlength, maxlength, min
-    - message // the default message for that error. for example: invalid length
-// if don't have a error message for a specific validator that value is showed
-defaultErrorMessage
-```
 example: 
 ```
 const settings: FormValidatorSettings = {
-  errorMessages: [{error: 'min', message: 'minimo generico'}],
-  defaultErrorMessage: 'xxxxx'
+  errorMessages: [{error: 'min', message: 'minimo generico'}], // Override the error min as custom message
+  defaultErrorMessage: 'xxxxx' // If don't have defined messages for all errors that is a default messages
 }
 @NgModule({
   imports: [
